@@ -18,7 +18,7 @@ result = {
 pictures = ["faible", "moyenne", "elevee"]
 colors = ["#FF4B4B", "#FFA500", "#00C853"]
 model = joblib.load("Hamad_Rassem_Mahamat_The_final_model.pkl")
-with open("Travis Scott - SICKO MODE ft. Drake (320 kbps).mp3", "rb") as f:
+with open("warrior_medium-192841.mp3", "rb") as f:
     audio_bytes = f.read()
 b64 = base64.b64encode(audio_bytes).decode()
 
