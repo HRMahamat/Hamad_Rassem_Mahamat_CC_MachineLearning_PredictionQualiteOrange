@@ -1,7 +1,8 @@
-import streamlit as st
-from PIL import Image
-import pandas as pd
 import joblib
+import base64
+import streamlit as st
+import pandas as pd
+from PIL import Image
 from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
 from sklearn.pipeline import Pipeline
@@ -17,6 +18,9 @@ result = {
 pictures = ["faible", "moyenne", "elevee"]
 colors = ["#FF4B4B", "#FFA500", "#00C853"]
 model = joblib.load("Hamad_Rassem_Mahamat_The_final_model.pkl")
+with open("Travis Scott - SICKO MODE ft. Drake (320 kbps).mp3", "rb") as f:
+    audio_bytes = f.read()
+b64 = base64.b64encode(audio_bytes).decode()
 
 
 def input():
@@ -46,8 +50,7 @@ def input():
 
 st.set_page_config(page_title="Qualité d'Orange 🍊", page_icon="🍊", layout="wide")
 
-st.markdown(
-    """
+st.markdown("""
     <style>
         .stApp {
             background-color: #121212;
@@ -105,17 +108,14 @@ st.markdown("Nous prédisons la qualité du fruit **Orange** grâce à un modèl
 
 st.sidebar.header("⚙️ Les paramètres d'entrées")
 df=input()
+st.sidebar.audio(audio_bytes, format="audio/mp3", start_time=0, autoplay=True, loop=True)
 
 st.markdown("### <br>Vous souhaitez déterminer la <span style='color: #FFA500;'>qualité</span> de votre orange 🔍", unsafe_allow_html=True)
 st.write(df.iloc[:, :6])
 st.write(df.iloc[:, -3:])
 
 predict = model.predict(df)[0]
-st.markdown(f"""
-    <br><div class="result-box">
-        <span style='color: {colors[predict]};'>✅ Prédiction achevée!</span>
-    </div>
-    """, unsafe_allow_html=True)
-st.markdown("\n\nNous estimons que l'orange que vous venez de décrire est de <span style='color: "+colors[predict]+";'>"+(str(result.get(predict, str(predict)))).upper()+"</span> ("+str(predict)+")!", unsafe_allow_html=True)
+st.markdown(f"""<br><div class="result-box"><span style='color: {colors[predict]};'>✅ Prédiction achevée!</span></div>""", unsafe_allow_html=True)
+st.markdown("Nous estimons que l'orange que vous venez de décrire est de <span style='color: "+colors[predict]+";'>"+(str(result.get(predict, str(predict)))).upper()+"</span> ("+str(predict)+")!", unsafe_allow_html=True)
 img=Image.open(pictures[predict]+".png")
 st.image(img.resize((1000, int((float(img.size[1]) * float((370 / float(img.size[0])))))), Image.FILTERED), caption="Image de reférence", use_container_width=False)
