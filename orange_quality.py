@@ -1,5 +1,4 @@
 import joblib
-import base64
 import streamlit as st
 import pandas as pd
 from PIL import Image
@@ -18,9 +17,6 @@ result = {
 pictures = ["faible", "moyenne", "elevee"]
 colors = ["#FF4B4B", "#FFA500", "#00C853"]
 model = joblib.load("Hamad_Rassem_Mahamat_The_final_model.pkl")
-with open("warrior_medium-192841.mp3", "rb") as f:
-    audio_bytes = f.read()
-b64 = base64.b64encode(audio_bytes).decode()
 
 
 def input():
@@ -108,7 +104,6 @@ st.markdown("Nous prédisons la qualité du fruit **Orange** grâce à un modèl
 
 st.sidebar.header("⚙️ Les paramètres d'entrées")
 df=input()
-st.sidebar.audio(audio_bytes, format="audio/mp3", start_time=0, autoplay=True, loop=True)
 
 st.markdown("### <br>Vous souhaitez déterminer la <span style='color: #FFA500;'>qualité</span> de votre orange 🔍", unsafe_allow_html=True)
 st.write(df.iloc[:, :6])
