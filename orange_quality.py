@@ -106,13 +106,13 @@ st.markdown("Nous prédisons la qualité du fruit **Orange** grâce à un modèl
 st.sidebar.header("⚙️ Les paramètres d'entrées")
 df=input()
 
-st.markdown("### Vous souhaitez déterminer la <span style='color: #FFA500;'>qualité</span> de votre orange 🔍", unsafe_allow_html=True)
+st.markdown("<br>### Vous souhaitez déterminer la <span style='color: #FFA500;'>qualité</span> de votre orange 🔍", unsafe_allow_html=True)
 st.write(df.iloc[:, :6])
 st.write(df.iloc[:, -3:])
 
 predict = model.predict(df)[0]
 st.markdown(f"""
-    <div class="result-box">
+    <br><div class="result-box">
         <span style='color: {colors[predict]};'>✅ Prédiction achevée!</span>
     </div>
     """, unsafe_allow_html=True)
