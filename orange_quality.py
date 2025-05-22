@@ -55,10 +55,10 @@ st.markdown(
             font-family: 'Segoe UI', sans-serif;
         }
         h1, h2, h3 {
-            color: #FFFFFF;
+            color: #FF8C00;
         }
         .stSidebar {
-            background-color: gray;
+            background-color: #1e1e1e;
             border-right: 2px solid #FF8C00;
         }
         .block-container {
