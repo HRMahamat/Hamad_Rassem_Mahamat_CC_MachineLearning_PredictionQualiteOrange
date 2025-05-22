@@ -2,6 +2,11 @@ import streamlit as st
 from PIL import Image
 import pandas as pd
 import joblib
+from sklearn.tree import DecisionTreeClassifier
+from xgboost import XGBClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.feature_selection import SelectKBest
 
 
 result = {
