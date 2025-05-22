@@ -79,6 +79,24 @@ st.markdown(
             font-size: 1.3rem;
             font-weight: bold;
         }
+        html, body, .main, .block-container {
+            background-color: #121212 !important;
+            color: #FFFFFF !important;
+        }
+        [data-testid="stSidebar"] > div:first-child {
+            background-color: #1E1E1E !important;
+        }
+        h1, h2, h3 {
+            color: #FF8C00 !important;
+        }
+        div[data-testid="stDataFrame"] div[role="grid"] {
+            background-color: #1E1E1E !important;
+            color: #FFFFFF !important;
+        }
+        div[data-testid="stAlert"] {
+            background-color: #2E2E2E !important;
+            color: #FFFFFF !important;
+        }
     </style>
     """, unsafe_allow_html=True)
 
